@@ -33,6 +33,7 @@ Finish without opening any hint and you get a **+5 bonus**. A streak counts each
 - Frontend: HTML, CSS, JavaScript
 - Backend: Node.js and Express
 - AI: Google Gemini API (called from the server, so the key is never exposed to the browser)
+- Built as a learning project with help from Claude (an AI assistant by Anthropic) for code generation and guidance.
 
 ## Project structure
 
