@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Role Prep — practice real internship tasks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
+          <rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
+          <rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M17.5 14v7M14 17.5h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <h1>Role Prep</h1>
+      </div>
+      <p>Type any internship or job role. Get a real-world-style dataset and task for it — practice the actual work, not just interview questions.</p>
+    </header>
+
+    <div class="top-bar">
+      <div class="tabs">
+        <button class="tab-btn active" id="tabPractice">Practice</button>
+        <button class="tab-btn" id="tabDashboard">Dashboard</button>
+      </div>
+      <span class="stats-pill" id="headerStats">🔥 0 day streak · 0 pts</span>
+    </div>
+
+    <div id="practiceView">
+    <div class="input-row">
+      <input type="text" id="roleInput" placeholder="e.g. Data Analyst Intern, Marketing Intern, Backend Developer..." />
+      <button id="generateBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 3l1.8 5.4L19 10l-5.2 1.6L12 17l-1.8-5.4L5 10l5.2-1.6L12 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        </svg>
+        Generate
+      </button>
+    </div>
+    <div class="examples">
+      <button data-role="Data Analyst Intern">Data Analyst Intern</button>
+      <button data-role="HR Intern">HR Intern</button>
+      <button data-role="Digital Marketing Intern">Digital Marketing Intern</button>
+      <button data-role="Backend Developer Intern">Backend Developer Intern</button>
+    </div>
+
+    <div class="options-row">
+      <div class="difficulty-picker" id="difficultyPicker">
+        <span class="difficulty-label">Difficulty</span>
+        <button class="diff-btn active" data-difficulty="easy">Easy</button>
+        <button class="diff-btn" data-difficulty="medium">Medium</button>
+        <button class="diff-btn" data-difficulty="hard">Hard</button>
+      </div>
+
+      <label class="beginner-toggle">
+        <input type="checkbox" id="beginnerMode" checked>
+        New to this? Show the exact walkthrough automatically
+      </label>
+    </div>
+
+    <div id="status"></div>
+
+    <div class="workspace" id="workspace" style="display:none;">
+      <div class="card">
+        <div class="card-title-row">
+          <h2 id="roleTitle"></h2>
+          <span class="difficulty-chip" id="difficultyChip"></span>
+        </div>
+
+        <h3><svg class="section-icon" viewBox="0 0 24 24" fill="none"><path d="M4 19V5a1 1 0 011-1h9l6 6v9a1 1 0 01-1 1H5a1 1 0 01-1-1z" stroke="currentColor" stroke-width="1.5"/><path d="M14 4v5a1 1 0 001 1h5" stroke="currentColor" stroke-width="1.5"/></svg> What this role actually does</h3>
+        <p class="overview" id="overview"></p>
+
+        <h3><svg class="section-icon" viewBox="0 0 24 24" fill="none"><path d="M9 11l3 3L22 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Your task</h3>
+        <div class="task-text" id="task"></div>
+
+        <div class="walkthrough" id="walkthrough">
+          <button class="walkthrough-toggle" id="walkthroughToggle">
+            <span><svg class="section-icon" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Step-by-step walkthrough (<span id="stepsProgress">0/0</span> done)</span>
+            <span class="chevron" id="walkthroughChevron">+</span>
+          </button>
+          <div class="walkthrough-progress-track">
+            <div class="walkthrough-progress-fill" id="walkthroughProgressFill"></div>
+          </div>
+          <div class="walkthrough-body" id="walkthroughBody"></div>
+          <div class="celebration" id="celebration">🎉 All steps done — nice work!</div>
+        </div>
+
+        <h3><svg class="section-icon" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3 9h18M9 21h6M9 17v4M15 17v4" stroke="currentColor" stroke-width="1.5"/></svg> Sample data</h3>
+        <div class="table-scroll">
+          <table id="dataTable"></table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2><svg class="section-icon" viewBox="0 0 24 24" fill="none"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.5.4.8 1 .8 1.6v.5h5.4v-.5c0-.6.3-1.2.8-1.6A6 6 0 0012 3z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Hints</h2>
+        <p class="empty" id="hintsEmpty">Try the task first. Open a hint only if you get stuck.</p>
+        <div id="hintsList"></div>
+      </div>
+    </div>
+    </div>
+    <div id="dashboardView" class="hidden"></div>
+  </div>
+
+<script src="script.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>
