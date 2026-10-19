@@ -546,3 +546,175 @@ header h1 { margin: 0; }
   font-family: 'Inter', sans-serif;
   padding: 0;
 }
+
+/* ===== Welcome screen: dusk over an old Chinese town, with a flying dragon ===== */
+body.welcome-open { overflow: hidden; }
+
+.welcome {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: linear-gradient(180deg, #14060A 0%, #4A0E12 32%, #9C2A1C 62%, #E0682A 82%, #F2A64A 100%);
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.welcome.leaving { opacity: 0; visibility: hidden; }
+
+.scene, .dragon-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.dragon-canvas { pointer-events: none; }
+
+.welcome-inner {
+  position: relative;
+  z-index: 3;
+  max-width: 470px;
+  margin-top: 16vh;
+  padding: 40px 30px 28px;
+  text-align: center;
+  background: rgba(30, 6, 8, 0.66);
+  border: 1px solid #D9A441;
+  border-radius: 6px;
+  box-shadow: 0 0 0 4px rgba(30, 6, 8, 0.66), 0 0 0 5px rgba(217, 164, 65, 0.55), 0 18px 50px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+}
+
+.welcome-seal {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-4deg);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #B3201B;
+  color: #F6E3B0;
+  border: 2px solid #E7C373;
+  border-radius: 4px;
+  font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
+  font-size: 26px;
+}
+
+.welcome-zh {
+  font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
+  color: #E7C373;
+  letter-spacing: 0.45em;
+  font-size: 1.1rem;
+  margin: 2px 0 4px;
+}
+
+.welcome-inner h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 2.2rem;
+  color: #F6E3B0;
+  margin: 0 0 10px;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+.welcome-inner p { color: #EBCFAE; font-size: 1.02rem; margin: 0 0 26px; }
+
+.welcome-btn {
+  background: linear-gradient(180deg, #C62A22, #8F1713);
+  color: #F9E9BE;
+  border: 1px solid #E7C373;
+  border-radius: 4px;
+  padding: 13px 36px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  transition: filter 0.15s ease, transform 0.15s ease;
+}
+.welcome-btn:hover { filter: brightness(1.15); transform: translateY(-1px); }
+
+.lantern { transform-box: fill-box; transform-origin: 50% 0%; animation: lanternSway 3.4s ease-in-out infinite; }
+@keyframes lanternSway {
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(4deg); }
+}
+
+@media (max-width: 480px) {
+  .welcome-inner { margin-top: 20vh; padding: 38px 20px 24px; }
+  .welcome-inner h2 { font-size: 1.8rem; }
+}
+@media (prefers-reduced-motion: reduce) { .lantern { animation: none; } }
+
+/* ===== Theme: dusk over an old Chinese town (same look as the welcome screen) ===== */
+:root {
+  --bg: #14060A;
+  --surface: rgba(30, 6, 8, 0.72);
+  --ink: #F6E3B0;
+  --muted: #CFAE86;
+  --pine: #C62A22;
+  --pine-dark: #8F1713;
+  --amber: #E7C373;
+  --line: rgba(217, 164, 65, 0.38);
+}
+body { background: linear-gradient(180deg, #14060A 0%, #3C0C12 40%, #6B1A14 75%, #8F2A18 100%) fixed; color: var(--ink); min-height: 100vh; }
+.app-bg { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: 0.55; }
+.wrap { position: relative; z-index: 1; }
+
+header h1 { color: #F6E3B0; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6); }
+header p { color: #EBCFAE; }
+.brand-seal {
+  width: 38px; height: 38px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  background: #B3201B; color: #F6E3B0; border: 2px solid #E7C373; border-radius: 4px; transform: rotate(-4deg);
+  font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', serif; font-size: 22px;
+}
+
+.card, .stat-card, .stats-pill {
+  background: var(--surface);
+  backdrop-filter: blur(3px);
+  border: 1px solid rgba(217, 164, 65, 0.6);
+  border-radius: 6px;
+  box-shadow: 0 0 0 3px rgba(30, 6, 8, 0.5), 0 0 0 4px rgba(217, 164, 65, 0.28), 0 14px 40px rgba(0, 0, 0, 0.4);
+}
+.stats-pill { border-radius: 20px; box-shadow: none; color: #F6E3B0; }
+.card:hover { box-shadow: 0 0 0 3px rgba(30, 6, 8, 0.5), 0 0 0 4px rgba(217, 164, 65, 0.45), 0 16px 44px rgba(0, 0, 0, 0.5); }
+.card h3 { color: #E7C373; }
+
+.input-row input { background: rgba(20, 4, 6, 0.78); color: #F6E3B0; border-color: rgba(217, 164, 65, 0.6); }
+.input-row input::placeholder { color: #A8895F; }
+.input-row input:focus { outline: 2px solid #E7C373; }
+.input-row button, .tab-btn.active, .diff-btn.active {
+  background: linear-gradient(180deg, #C62A22, #8F1713); border: 1px solid #E7C373; color: #F9E9BE;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+}
+.input-row button:hover, .tab-btn.active:hover { background: linear-gradient(180deg, #D8332A, #A01B16); }
+.input-row button:disabled { background: #5A2A24; border-color: #8a6a3a; }
+.examples button, .diff-btn, .tab-btn { background: rgba(30, 6, 8, 0.55); color: #EBCFAE; border-color: var(--line); }
+.examples button:hover, .diff-btn:hover, .tab-btn:hover { border-color: #E7C373; color: #E7C373; }
+.tab-btn.active:hover, .diff-btn.active:hover { color: #F9E9BE; }
+
+th { background: rgba(217, 164, 65, 0.14); color: #E7C373; }
+td { color: #EBCFAE; }
+.task-text { background: rgba(217, 164, 65, 0.1); border-left-color: #E7C373; }
+.walkthrough-toggle { background: rgba(217, 164, 65, 0.1); color: #E7C373; }
+.walkthrough-toggle:hover, .hint-toggle:hover { background: rgba(217, 164, 65, 0.2); }
+.hint-toggle { background: transparent; color: #E7C373; }
+.hint.open, .walkthrough.open { border-color: #E7C373; }
+.step-row.done label { text-decoration-color: #C62A22; }
+
+.difficulty-chip.easy { background: rgba(62, 122, 94, 0.35); color: #9FE0BC; }
+.difficulty-chip.medium { background: rgba(231, 195, 115, 0.2); color: #E7C373; }
+.difficulty-chip.hard { background: rgba(198, 42, 34, 0.3); color: #FF9A8A; }
+.celebration { background: rgba(62, 122, 94, 0.3); color: #BFEBD2; }
+
+.walkthrough-progress-track, .bar-track { background: rgba(217, 164, 65, 0.2); }
+.walkthrough-progress-fill, .bar-fill { background: linear-gradient(90deg, #C62A22, #E7C373); }
+.bar-fill.medium { background: #E7C373; }
+.bar-fill.hard { background: #C62A22; }
+.stat-value { color: #E7C373; }
+.day-cell { background: rgba(217, 164, 65, 0.18); }
+.day-cell.on { background: #E7C373; }
+.day-cell.today { outline-color: #C62A22; }
+.recent-result.ok { color: #9FE0BC; }
+#status, .empty { color: #EBCFAE; }

@@ -137,7 +137,7 @@
         '<div class="level-row"><span class="level-name">' + lv.cur.name + '</span><span class="stat-label">' + (lv.next ? lv.toNext + ' pts to ' + lv.next.name : 'Top level reached') + '</span></div>' +
         '<div class="bar-track"><div class="bar-fill" style="width:' + lv.pct + '%"></div></div></div>' +
       '<div class="card dash-card"><h3>Last 14 days</h3><div class="day-strip">' + strip + '</div>' +
-        '<p class="stat-label">Green = at least one task completed that day. Finish a task every day to grow your streak.</p></div>' +
+        '<p class="stat-label">Gold = at least one task completed that day. Finish a task every day to grow your streak.</p></div>' +
       '<div class="card dash-card"><h3>Completed by difficulty</h3>' + diffRow('easy', 'Easy') + diffRow('medium', 'Medium') + diffRow('hard', 'Hard') +
         '<p class="stat-label">Points: Easy 10, Medium 20, Hard 30, plus 5 bonus if you finish without opening any hint.</p></div>' +
       '<div class="card dash-card"><h3>Recent practice</h3>' + (recent || '<p class="empty">No practice yet. Generate a task in the Practice tab to get started.</p>') + '</div>' +
