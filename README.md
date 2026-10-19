@@ -43,6 +43,7 @@ Finish without opening any hint and you get a **+5 bonus**. A streak counts each
 - Backend: Node.js and Express
 - AI: Google Gemini API (called from the server, so the key is never exposed to the browser)
 - Hosting: Render
+- Built as a learning project with help from Claude (an AI assistant by Anthropic).
 
 ## Project structure
 
