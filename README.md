@@ -1,14 +1,22 @@
 # Role Prep
 
-**Live demo:** https://role-prep-app.onrender.com
-
 Practise the real work before your internship starts.
+
+**Live demo:** https://role-prep-app.onrender.com
+(Free hosting: if the site has been idle, the first load can take around a minute.)
 
 Type any internship or job role and Role Prep builds a hands-on practice session for it: a plain-language role overview, a realistic task, a fake dataset to work on, an exact step-by-step walkthrough, and hints. Finish tasks to earn points, build a daily streak and level up.
 
 ## Problem
 
 Students can find internships, but have no way to practise the actual work, with realistic data and clear guidance, before they start. Job sites only list openings, interview prep covers questions rather than tasks, and beginners often do not know which tool to open or what to click.
+
+## Version history
+
+- **v2.0** - Old Chinese dusk theme across the whole app (deep red and gold, pagoda silhouettes, lanterns), a welcome screen with a pagoda scene and swaying lanterns, and matching gold and red dashboard styling.
+- **v1.0** - Role-based practice tasks with fake datasets, step-by-step walkthrough, hints, Easy/Medium/Hard levels, and a points and streak dashboard.
+
+The code of every version stays available under **Releases** (use the tag dropdown to browse the files as they were in v1.0).
 
 ## Features
 
@@ -17,6 +25,7 @@ Students can find internships, but have no way to practise the actual work, with
 - **Beginner mode:** a click-by-click walkthrough with a checklist and progress bar. Switch it off to try the task on your own first.
 - **Hints:** three hints per task, from a gentle nudge to near-solution.
 - **Dashboard:** total points, level (Rookie, Intern, Pro, Expert), current and best streak, last 14 days of activity, completed tasks by difficulty and recent practice.
+- **Welcome screen (v2.0):** a dusk scene over an old Chinese town that greets the learner before the app opens.
 
 ### Scoring
 
@@ -33,7 +42,7 @@ Finish without opening any hint and you get a **+5 bonus**. A streak counts each
 - Frontend: HTML, CSS, JavaScript
 - Backend: Node.js and Express
 - AI: Google Gemini API (called from the server, so the key is never exposed to the browser)
-- Built as a learning project with help from Claude (an AI assistant by Anthropic) for code generation and guidance.
+- Hosting: Render
 
 ## Project structure
 
@@ -44,8 +53,8 @@ role-prep-app/
 ├── .env.example      template for your API key
 ├── .gitignore        keeps .env and node_modules out of Git
 └── public/
-    ├── index.html    page structure
-    ├── style.css     styling
+    ├── index.html    page structure and welcome screen
+    ├── style.css     styling and the Chinese dusk theme
     ├── script.js     practice flow: generate task, walkthrough, hints
     └── dashboard.js  points, streaks and the Dashboard tab
 ```
@@ -62,7 +71,7 @@ role-prep-app/
    ```
    GEMINI_API_KEY=your-key-here
    ```
-   Never commit `.env`. It is already listed in `.gitignore`.
+   Never commit `.env`. It is listed in `.gitignore`.
 5. Start the app:
    ```
    npm start
@@ -87,4 +96,3 @@ role-prep-app/
 - Accounts and a database, so history and a leaderboard work across devices
 - Automatic retry when the AI service is busy
 - Role categories (Tech, Marketing, HR, Finance)
-- Online deployment
