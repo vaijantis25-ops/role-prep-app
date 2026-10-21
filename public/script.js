@@ -37,7 +37,6 @@ walkthroughToggle.addEventListener('click', () => {
 document.querySelectorAll('.examples button').forEach(btn => {
   btn.addEventListener('click', () => {
     roleInput.value = btn.dataset.role;
-    generate();
   });
 });
 
